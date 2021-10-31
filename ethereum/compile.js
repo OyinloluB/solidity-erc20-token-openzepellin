@@ -5,4 +5,22 @@ const solc = require("solc");
 const myTokenPath = path.resolve(__dirname, "contracts", "MyToken.sol");
 const source = fs.readFileSync(myTokenPath, "utf8");
 
-module.exports = solc.compile(source, 1).contracts[":MyToken"];
+var input = {
+  language: "Solidity",
+  sources: {
+    "MyToken.sol": {
+      content: source,
+    },
+  },
+  settings: {
+    outputSelection: {
+      "*": {
+        "*": ["*"],
+      },
+    },
+  },
+};
+
+console.log(solc.compile(JSON.stringify(input)));
+
+module.exports = solc.compile(JSON.stringify(input));
