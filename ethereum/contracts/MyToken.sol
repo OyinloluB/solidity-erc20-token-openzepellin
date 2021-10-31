@@ -8,7 +8,7 @@ contract MyToken is ERC20 {
     address public admin;
 
     constructor() ERC20("My Token", "MTN") {
-        _mint(msg.sender, 10000 * 10**18);
+        _mint(msg.sender, 1000 * 10**18);
         admin = msg.sender;
     }
 
